@@ -1,0 +1,31 @@
+{
+  "name": "signnow-promise",
+  "version": "1.0.0",
+  "description": "Converts signnow node sdk to return promise",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpian/signnow-promise.git"
+  },
+  "keywords": [
+    "document",
+    "promise",
+    "sign",
+    "signnow"
+  ],
+  "author": "Gene Pian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gpian/signnow-promise/issues"
+  },
+  "homepage": "https://github.com/gpian/signnow-promise#readme",
+  "dependencies": {
+    "signnow": "^1.1.4"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
+  }
+}
