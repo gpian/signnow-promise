@@ -1,7 +1,7 @@
 const settings = require('./.signnow/credentials.json');
 const signnow = require('../src/index')({
     credentials: settings.eval.credentials,
-    isProduction: false
+    production: false
 });
 
 it('should be a promise', async () => {
