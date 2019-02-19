@@ -1,6 +1,6 @@
 {
   "name": "signnow-promise",
-  "version": "1.0.0",
+  "version": "1.0.1-rc1.0",
   "description": "Converts signnow node sdk callback pattern to return promises.",
   "main": "src/index.js",
   "scripts": {
