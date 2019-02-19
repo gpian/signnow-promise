@@ -18,168 +18,217 @@ declare namespace SignNowPromise {
         webhook: Webhook;
     }
 
-    export interface Callback {
-        (err: any, data: any): void;
-    }
-
     export interface Document {
         /**
          * uploads a file and creates a document. This endpoint accepts .doc, .docx, .pdf, and .png file types
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        create(obj: any, callback: Callback) : any;
+        create(obj: DocumentCreate) : Promise<any>;
         /**
          * uploads a file that contains signnow Document Field Tags. This endpoint
          * only accepts .pdf (You may convert the document from .doc or .docx to .pdf)
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        fieldextract(obj: any, callback: Callback) : any;
+        fieldextract(obj: DocumentFieldExtract) : Promise<any>;
         /**
          * list all documents for user
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        list(obj: any, callback: Callback) : any;
+        list(obj: DocumentList) : Promise<any>;
         /**
          * retrieve a document resource
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        view(obj: any, callback: Callback) : any;
+        view(obj: DocumentView) : Promise<any>;
         /**
          * update an existing document. Add fields [signature | text | initials | checkbox ], elements [signature | text | check]
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        update(obj: any, callback: Callback) : any;
+        update(obj: DocumentUpdate) : Promise<any>;
         /**
          * download a collapsed document
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        download(obj: any, callback: Callback) : any;
+        download(obj: DocumentDownload) : Promise<any>;
         /**
          * creates a one-time use URL for anyone to download the document as a PDF.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        share(obj: any, callback: Callback) : any;
+        share(obj: DocumentShare) : Promise<any>;
         /**
          * create an invite to sign a document. You can create a simple free form invite or a role-based invite.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        invite(obj: any, callback: Callback) : any;
+        invite(obj: DocumentInvite) : Promise<any>;
         /**
          * cancel an invite to a document.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        cancelInvite(obj: any, callback: Callback) : any;
+        cancelInvite(obj: DocumentCancelInvite) : Promise<any>;
         /**
          * merges existing documents into one.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        merge(obj: any, callback: Callback) : any;
+        merge(obj: DocumentMerge) : Promise<any>;
         /**
          * get the history of a document
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        history(obj: any, callback: Callback) : any;
+        history(obj: DocumentHistory) : Promise<any>;
     }
 
     export interface Enumerations {
         /**
          * add an enumeration field(drop down) to a document.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        addField(obj: any, callback: Callback) : any;
+        addField(obj: EnumerationsAddField) : Promise<any>;
         /**
          * add enumeration options to the field that was created using addField.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        addOptions(obj: any, callback: Callback) : any;
+        addOptions(obj: EnumerationsAddOptions) : Promise<any>;
     }
 
     export interface Folder {
         /**
          * list folders
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        list(obj: any, callback: Callback) : any;
+        list(obj: FolderList) : Promise<any>;
         /**
          * get documents in a folder
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        documents(obj: any, callback: Callback) : any;
+        documents(obj: FolderDocuments) : Promise<any>;
     }
 
     export interface OAuth2 {
         /**
          * request an access token for a user
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        requestToken(obj: any, callback: Callback) : any;
+        requestToken(obj: OAuth2RequestToken) : Promise<any>;
         /**
          * verify an access token for a user
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        verify(obj: any, callback: Callback) : any;
+        verify(obj: OAuth2Verify) : Promise<any>;
     }
 
     export interface Template {
         /**
          * create a template by flattening an existing document.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        create(obj: any, callback: Callback) : any;
+        create(obj: TemplateCreate) : Promise<any>;
         /**
          * create a new document by copying a flattened document. If a name is not supplied
          * than it will default to the original document's name.
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        duplicate(obj: any, callback: Callback) : any;
+        duplicate(obj: TemplateDuplicate) : Promise<any>;
     }
 
     export interface User {
         /**
          * create new user account
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        create(obj: any, callback: Callback) : any;
+        create(obj: UserCreate) : Promise<any>;
         /**
          * retrieve user account details
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        retrieve(obj: any, callback: Callback) : any;
+        retrieve(obj: UserRetrieve) : Promise<any>;
     }
 
     export interface Webhook {
         /**
          * list webhooks
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        list(obj: any, callback: Callback) : any;
+        list(obj: WebhookList) : Promise<any>;
         /**
          * create webhook
-         * @param obj 
-         * @param callback 
+         * @param obj  
          */
-        create(obj: any, callback: Callback) : any;
+        create(obj: WebhookCreate) : Promise<any>;
+    }
+
+    export interface Token {
+        token: string;
+    }
+    export interface TokenAndId extends Token {
+        id: string;
+    }
+    export interface DocumentCreate extends Token {
+        filepath: string;
+    }
+    export interface DocumentFieldExtract extends DocumentCreate {}
+    export interface DocumentList extends Token {}
+    export interface DocumentView extends TokenAndId {}
+    export interface DocumentUpdate extends TokenAndId {
+        fields: object;
+    }
+    export interface DocumentDownload extends TokenAndId {}
+    export interface DocumentShare extends TokenAndId {}
+    export interface DocumentInvite extends TokenAndId {
+        data: object;
+    }
+    export interface DocumentCancelInvite extends TokenAndId {}
+    export interface DocumentMerge extends Token {
+        name: string;
+    }
+    export interface DocumentHistory extends TokenAndId {}
+
+    export interface EnumerationsAddField extends Token {
+        document_id: string;
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+        page_number: number;
+        role: string;
+        required: boolean;
+        label: string;
+    }
+    export interface EnumerationOption {
+        enumeration_id: string;
+        data: string;
+    }
+    export interface EnumerationsAddOptions extends Token {
+        enumeration_options: Array<EnumerationOption>;
+    }
+    export interface FolderList extends Token {}
+    export interface FolderDocuments extends TokenAndId {
+        filter: Array<object>;
+        sort: object;
+    }
+    export interface OAuth2RequestToken {
+        username: string;
+        password: string;
+    }
+    export interface OAuth2Verify extends Token {}
+    export interface TemplateCreate extends Token {
+        document_id: string;
+        document_name: string;
+    }
+    export interface TemplateDuplicate extends TokenAndId {
+        name: string;
+    }
+
+    export interface UserCreate {
+        first_name: string;
+        last_name: string;
+        email: string;
+        password: string;
+    }
+    export interface UserRetrieve extends Token {}
+
+    export interface WebhookList extends Token {}
+    export interface WebhookCreate extends Token {
+        event: string;
+        callback_url: string;
     }
 }
